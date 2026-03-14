@@ -1,4 +1,4 @@
-# 📄 Document Insight Assistant
+# Document Insight Assistant
 ```text
 1. Arayüz: Streamlit
 
@@ -20,7 +20,7 @@ Document Insight Assistant, yerel bir LLM (Large Language Model) kullanarak belg
 
 Bu sistem, dokümanı doğrudan modele beslemek yerine; metni anlamlı parçalara ayırır, en ilgili kısımları "vektör tabanlı" olarak bulur ve sadece bu kanıtlara dayanarak cevap üretir. Bu sayede hallucination riskini minimize eder ve veri gizliliğini korur.
 
-# ✨ Öne Çıkan Özellikler
+# Öne Çıkan Özellikler
 Geniş Format Desteği: PDF, JPG ve PNG dosyalarını işleyebilir.
 
 Hibrit Metin Çıkarma: Dijital PDF'lerden doğrudan metin çekebilir, taranmış belgeler/görseller için ise GLM-OCR modelini kullanır.
@@ -31,7 +31,7 @@ Tamamen Yerel: Verileriniz dışarı çıkmaz; işlemler kendi makinenizde Ollam
 
 Çift Dilli Destek: Türkçe ve İngilizce dillerinde yüksek performans sergiler.
 
-# 🛠️ Teknik Pipeline (Akış)
+# Teknik Pipeline (Akış)
 
 ```bash
 Upload File → Extraction → Chunking → Embedding → Retrieval → Final Answer
@@ -174,6 +174,7 @@ app/
 └── utils.py      # Sistem için gerekli dil ayarları
 ```
 # Mevcut Tasarım Kararları
+```text
 Bu proje özellikle retrieval-augmented bir yapı olarak tasarlanmıştır; yani tüm belge doğrudan LLM’e gönderilmez.
 Bunun nedenleri:
 •	cevap üretimini daha kontrollü hale getirmek
@@ -181,9 +182,11 @@ Bunun nedenleri:
 •	hangi bağlamdan cevap verildiğini daha görünür kılmak
 •	extraction / retrieval / answer katmanlarını ayrı ayrı debug edebilmek
 Son katmandaki LLM, tüm belgeyi değil, yalnızca retrieval ile bulunan ilgili bağlamı görür
+```
 
 
 # Sınırlamalar
+```text
 Düşük çözünürlüklü, eğik, bulanık veya gürültülü görseller taramalarda OCR kalitesi düşebilir.
 
 Uzun kaynakça içeren belgelerde retrieval hassasiyeti değişebilir.
@@ -191,23 +194,26 @@ Uzun kaynakça içeren belgelerde retrieval hassasiyeti değişebilir.
 Zaman zaman cevaplarda dil karmaşası yaşanabilir.
 
 Bu sistem MVP niteliğindedir; öncelik tam üretim kalitesinden çok, uçtan uca çalışan bir pipeline kurmaktır.
-
+```
 # Geliştirme Notları
+```text
 Bu repoda ayrıca bir DEVLOG.md dosyası bulunur. Burada:
 •	alınan teknik kararlar,
 •	değerlendirilen alternatifler,
 •	geliştirme sırasında yaşanan problemler,
 •	ve sistemin zaman içinde nasıl evrildiği
 kronolojik olarak not edilmiştir.
-
+```
 # Örnek Kullanım Senaryoları
+```text
 •	Belgenin tarihini sormak
 •	Belgenin kime gönderildiğini sormak
 •	Bir makalenin ne hakkında olduğunu sormak
 •	Belgede geçen isimleri veya referansları listelemek
 •	Aynı belge üzerinde Türkçe veya İngilizce soru sormak
-
+```
 # Gelecek Planları
+```text
 Olası sonraki adımlar:
 •	daha güçlü OCR / layout-aware parsing
 •	metadata-aware retrieval
@@ -215,4 +221,4 @@ Olası sonraki adımlar:
 •	cevaplarda daha güçlü citation formatı
 •	çok dilli cevap kontrolünü daha sağlam hale getirme
 •	tablo / form alanları için yapılandırılmış veri çıkarımı
-
+```
