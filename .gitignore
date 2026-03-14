@@ -1,0 +1,18 @@
+# Büyük modeller (2.7 GB'lık dosya buranın içinde olduğu için gitmeyecek)
+models/
+
+# Python sanal ortamı
+.venv/
+venv/
+env/
+
+# Gereksiz sistem ve önbellek dosyaları
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# Model ağırlıkları (dosya bazlı engelleme)
+*.safetensors
+*.bin
+*.pth
