@@ -30,7 +30,6 @@ Retrieval: Sorunuzla en alakalı parçaların vektör benzerliği ile bulunması
 Final Answer: İlgili bağlamın Qwen 2.5:7b modeline sunularak cevabın üretilmesi.
 
 📦 Kurulum ve Hazırlık
-1. Ortamın Hazırlanması
 
 # Sanal ortam oluşturun
 python -m venv .venv
@@ -43,8 +42,6 @@ source .venv/bin/activate
 # Bağımlılıkları yükleyin
 pip install -r requirements.txt
 
-2. OCR ve Embedding Modelleri
-Taranmış belgeler için GLM-OCR modelini indirin:
 
 # GLM-OCR indirin
 python -m pip install -U huggingface_hub
