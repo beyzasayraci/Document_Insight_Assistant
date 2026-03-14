@@ -129,6 +129,7 @@ Doğrulayın:
 ```bash
 ollama --version
 ollama list
+```
 ```text
 Projeyi çalıştırmadan önce şunlardan emin olun:
 •	Ollama kurulmuş olmalı
