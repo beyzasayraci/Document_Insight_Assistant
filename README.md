@@ -106,7 +106,11 @@ Belgenizi yükleyin.
 
 İşleme butonuna basarak metin çıkarımını bekleyin.
 
-Belge hakkında sorularınızı sormaya başlayın.
+Extraction ve Chunks çıktılarını gözlemleyin.
+
+Ask&Answer seçeneğinden belge hakkında sorularınızı sormaya başlayın.
+
+Sorularınızın cevaplarını görüntüleyin.
 ```
 # 📂 Proje Yapısı
 ```text
