@@ -1,7 +1,24 @@
 # 📄 Document Insight Assistant
+```text
+1. Arayüz: Streamlit
+
+2. PDF metin çıkarma: PyMuPDF
+
+3. Scanned/image extraction: GLM-OCR
+
+4. Chunking: metadata koruyan paragraph-aware / sentence-fallback chunking
+
+5. Embedding: BAAI/bge-m3 (SentenceTransformer ile)
+
+6. Retrieval: in-memory semantic search
+
+7. Yerel LLM altyapısı: Ollama
+
+8. Cevap üretim modeli: qwen2.5:7b
+```
 Document Insight Assistant, yerel bir LLM (Large Language Model) kullanarak belgelerinizle etkileşime girmenizi sağlayan, uçtan uca bir RAG (Retrieval-Augmented Generation) prototipidir.
 
-Bu sistem, dokümanı doğrudan modele beslemek yerine; metni anlamlı parçalara ayırır, en ilgili kısımları "vektör tabanlı" olarak bulur ve sadece bu kanıtlara dayanarak cevap üretir. Bu sayede hallucination (uydurma) riskini minimize eder ve veri gizliliğini korur.
+Bu sistem, dokümanı doğrudan modele beslemek yerine; metni anlamlı parçalara ayırır, en ilgili kısımları "vektör tabanlı" olarak bulur ve sadece bu kanıtlara dayanarak cevap üretir. Bu sayede hallucination riskini minimize eder ve veri gizliliğini korur.
 
 # ✨ Öne Çıkan Özellikler
 Geniş Format Desteği: PDF, JPG ve PNG dosyalarını işleyebilir.
@@ -94,14 +111,14 @@ Belge hakkında sorularınızı sormaya başlayın.
 app/
 ├── extraction/   # PDF parsing ve OCR mantığı
 ├── ingestion/    # Dosya yönlendirme ve yükleme akışı
-├── llm/          # Prompt üretimi ve Ollama bağlantısı
+├── qa/          # Prompt üretimi ve Ollama bağlantısı
 ├── processing/   # Chunking (parçalama) stratejileri
 ├── retrieval/    # Embedding ve vektör arama (In-memory)
 ├── ui/           # Streamlit arayüz bileşenleri
 └── config.py     # Model yolları ve sistem ayarları
 ```
 # ⚠️ Sınırlamalar
-Düşük çözünürlüklü taramalarda OCR kalitesi düşebilir.
+Düşük çözünürlüklü, eğik, bulanık veya gürültülü görseller taramalarda OCR kalitesi düşebilir.
 
 Uzun kaynakça içeren belgelerde retrieval hassasiyeti değişebilir.
 
@@ -113,5 +130,7 @@ Zaman zaman cevaplarda dil karmaşası yaşanabilir.
 [ ] Citation: Cevaplarda metnin hangi sayfadan alındığını vurgulama.
 
 [ ] Metadata Filtering: Tarih veya yazar gibi verilere göre filtreleme.
+
+[ ] Model verimliliği: Model verimliliğini arttırmak ve Soru-Cevap verimini üst seviyeye çıkartmak için prompt üzerinde güncelleme yapılabilir.
 
 Teknik kararlar ve gelişim süreci için DEVLOG.md dosyasını inceleyebilirsiniz.
