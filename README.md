@@ -47,12 +47,11 @@ pip install -r requirements.txt
 python -m pip install -U huggingface_hub
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='zai-org/GLM-OCR', local_dir='./models/GLM-OCR', local_dir_use_symlinks=False)"
 
-Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
-
-3. Yerel LLM Yapılandırması (Ollama)
-Cevap üretimi için Ollama kurulu olmalıdır.
+** Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
 
 # Ollama'yı indirin ve kurun.
+
+Cevap üretimi için Ollama kurulu olmalıdır.
 
 irm https://ollama.com/install.ps1 | iex
 
@@ -74,8 +73,8 @@ Belgenizi yükleyin.
 
 Belge hakkında sorularınızı sormaya başlayın.
 
-📂 Proje Yapısı
-Plaintext
+# 📂 Proje Yapısı
+
 app/
 ├── extraction/   # PDF parsing ve OCR mantığı
 ├── ingestion/    # Dosya yönlendirme ve yükleme akışı
@@ -85,14 +84,14 @@ app/
 ├── ui/           # Streamlit arayüz bileşenleri
 └── config.py     # Model yolları ve sistem ayarları
 
-⚠️ Sınırlamalar
+# ⚠️ Sınırlamalar
 Düşük çözünürlüklü taramalarda OCR kalitesi düşebilir.
 
 Uzun kaynakça içeren belgelerde retrieval hassasiyeti değişebilir.
 
 Zaman zaman cevaplarda dil karmaşası yaşanabilir.
 
-🗺️ Gelecek Planları
+# 🗺️ Gelecek Planları
 [ ] Reranking: Arama sonuçlarını daha hassas sıralamak için Cross-Encoder kullanımı.
 
 [ ] Citation: Cevaplarda metnin hangi sayfadan alındığını vurgulama.
