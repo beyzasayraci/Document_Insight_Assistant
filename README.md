@@ -59,7 +59,7 @@ Cevap üretimi için Ollama kurulu olmalıdır.
 
 irm https://ollama.com/install.ps1 | iex
 
-#Modeli çekin.
+# Modeli çekin.
 
 ollama pull qwen2.5:7b
 
