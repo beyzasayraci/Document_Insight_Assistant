@@ -91,9 +91,8 @@ irm https://ollama.com/install.ps1 | iex
 ```bash
 ollama pull qwen2.5:7b
 ```
-```text
 Doğrulayın:
-```
+
 ```bash
 ollama list 
  ```
