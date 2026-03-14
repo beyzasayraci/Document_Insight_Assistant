@@ -40,11 +40,16 @@ python -m venv .venv
 source .venv/bin/activate
 
 ## Bağımlılıkları yükleyin
+```bash
 pip install -r requirements.txt
 
 
 ## GLM-OCR indirin
+
+Taranmış belgeler için GLM-OCR modelini indirin:
+
 python -m pip install -U huggingface_hub
+
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='zai-org/GLM-OCR', local_dir='./models/GLM-OCR', local_dir_use_symlinks=False)"
 
 ** Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
