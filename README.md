@@ -44,10 +44,12 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 ## Bağımlılıkları yükleyin
+
 ```bash
 pip install -r requirements.txt
 ```
 ## GLM-OCR indirin
+
 ```text
 Taranmış belgeler için GLM-OCR modelini indirin:
 ```
