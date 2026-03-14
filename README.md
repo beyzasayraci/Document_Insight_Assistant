@@ -34,7 +34,7 @@ Tamamen Yerel: Verileriniz dışarı çıkmaz; işlemler kendi makinenizde Ollam
 # 🛠️ Teknik Pipeline (Akış)
 
 ```bash
-Yükleme → Extraction → Chunking → Embedding → Retrieval → Final Answer
+Upload File → Extraction → Chunking → Embedding → Retrieval → Final Answer
 ```
 Sistem, bir soruyu cevaplamak için şu aşamalardan geçer:
 
