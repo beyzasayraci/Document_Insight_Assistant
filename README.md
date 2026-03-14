@@ -1,9 +1,26 @@
-📄 Document Insight Assistant
+# 📄 Document Insight Assistant
+```text
+1. Arayüz: Streamlit
+
+2. PDF metin çıkarma: PyMuPDF
+
+3. Scanned/image extraction: GLM-OCR
+
+4. Chunking: metadata koruyan paragraph-aware / sentence-fallback chunking
+
+5. Embedding: BAAI/bge-m3 (SentenceTransformer ile)
+
+6. Retrieval: in-memory semantic search
+
+7. Yerel LLM altyapısı: Ollama
+
+8. Cevap üretim modeli: qwen2.5:7b
+```
 Document Insight Assistant, yerel bir LLM (Large Language Model) kullanarak belgelerinizle etkileşime girmenizi sağlayan, uçtan uca bir RAG (Retrieval-Augmented Generation) prototipidir.
 
-Bu sistem, dokümanı doğrudan modele beslemek yerine; metni anlamlı parçalara ayırır, en ilgili kısımları "vektör tabanlı" olarak bulur ve sadece bu kanıtlara dayanarak cevap üretir. Bu sayede hallucination (uydurma) riskini minimize eder ve veri gizliliğini korur.
+Bu sistem, dokümanı doğrudan modele beslemek yerine; metni anlamlı parçalara ayırır, en ilgili kısımları "vektör tabanlı" olarak bulur ve sadece bu kanıtlara dayanarak cevap üretir. Bu sayede hallucination riskini minimize eder ve veri gizliliğini korur.
 
-✨ Öne Çıkan Özellikler
+# ✨ Öne Çıkan Özellikler
 Geniş Format Desteği: PDF, JPG ve PNG dosyalarını işleyebilir.
 
 Hibrit Metin Çıkarma: Dijital PDF'lerden doğrudan metin çekebilir, taranmış belgeler/görseller için ise GLM-OCR modelini kullanır.
@@ -14,7 +31,7 @@ Tamamen Yerel: Verileriniz dışarı çıkmaz; işlemler kendi makinenizde Ollam
 
 Çift Dilli Destek: Türkçe ve İngilizce dillerinde yüksek performans sergiler.
 
-🛠️ Teknik Pipeline (Akış)
+# 🛠️ Teknik Pipeline (Akış)
 Sistem, bir soruyu cevaplamak için şu aşamalardan geçer:
 
 Yükleme: Belgenin sisteme alınması (Ingestion).
@@ -29,74 +46,97 @@ Retrieval: Sorunuzla en alakalı parçaların vektör benzerliği ile bulunması
 
 Final Answer: İlgili bağlamın Qwen 2.5:7b modeline sunularak cevabın üretilmesi.
 
-📦 Kurulum ve Hazırlık
-1. Ortamın Hazırlanması
-Bash
-# Sanal ortam oluşturun
+# 📦 Kurulum ve Hazırlık
+
+## Sanal ortam oluşturun
+```bash
 python -m venv .venv
-
-# Aktifleştirin (Windows)
+```
+## Aktifleştirin (Windows)
+```bash
 .venv\Scripts\activate
+```
 # Aktifleştirin (Linux/macOS)
+```bash
 source .venv/bin/activate
+```
+## Bağımlılıkları yükleyin
 
-# Bağımlılıkları yükleyin
+```bash
 pip install -r requirements.txt
-2. OCR ve Embedding Modelleri
+```
+## GLM-OCR indirin
+
+```text
 Taranmış belgeler için GLM-OCR modelini indirin:
-
-Bash
+```
+```bash
 python -m pip install -U huggingface_hub
+
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='zai-org/GLM-OCR', local_dir='./models/GLM-OCR', local_dir_use_symlinks=False)"
-Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
+```
 
-3. Yerel LLM Yapılandırması (Ollama)
+## BGE-M3 modeli
+```text
+BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
+```
+## Ollama'yı indirin ve kurun.
+```text
 Cevap üretimi için Ollama kurulu olmalıdır.
-
-Ollama'yı indirin ve kurun.
-
+```
+```bash
 irm https://ollama.com/install.ps1 | iex
+```
+## Modeli çekin.
+```bash
+ollama pull qwen2.5:7b
+```
+Doğrulayın:
 
-Modeli çekin: ollama pull qwen2.5:7b
-
-Doğrulayın: ollama list komutuyla modelin listede olduğunu görün.
-
-💻 Kullanım
-Uygulamayı başlatmak için:
-
-Bash
+```bash
+ollama list 
+ ```
+# Uygulamayı başlatmak için:
+```bash
 python run.py
-Ardından tarayıcınızda açılan Streamlit arayüzünde:
-
+```
+# Ardından tarayıcınızda açılan Streamlit arayüzünde:
+```text
 Belgenizi yükleyin.
 
 İşleme butonuna basarak metin çıkarımını bekleyin.
 
-Belge hakkında sorularınızı sormaya başlayın.
+Extraction ve Chunks çıktılarını gözlemleyin.
 
-📂 Proje Yapısı
-Plaintext
+Ask&Answer seçeneğinden belge hakkında sorularınızı sormaya başlayın.
+
+Sorularınızın cevaplarını görüntüleyin.
+```
+# 📂 Proje Yapısı
+```text
 app/
 ├── extraction/   # PDF parsing ve OCR mantığı
 ├── ingestion/    # Dosya yönlendirme ve yükleme akışı
-├── llm/          # Prompt üretimi ve Ollama bağlantısı
+├── qa/          # Prompt üretimi ve Ollama bağlantısı
 ├── processing/   # Chunking (parçalama) stratejileri
 ├── retrieval/    # Embedding ve vektör arama (In-memory)
 ├── ui/           # Streamlit arayüz bileşenleri
 └── config.py     # Model yolları ve sistem ayarları
-
-⚠️ Sınırlamalar
-Düşük çözünürlüklü taramalarda OCR kalitesi düşebilir.
+```
+# ⚠️ Sınırlamalar
+Düşük çözünürlüklü, eğik, bulanık veya gürültülü görseller taramalarda OCR kalitesi düşebilir.
 
 Uzun kaynakça içeren belgelerde retrieval hassasiyeti değişebilir.
 
 Zaman zaman cevaplarda dil karmaşası yaşanabilir.
 
-🗺️ Gelecek Planları
+# 🗺️ Gelecek Planları
 [ ] Reranking: Arama sonuçlarını daha hassas sıralamak için Cross-Encoder kullanımı.
 
 [ ] Citation: Cevaplarda metnin hangi sayfadan alındığını vurgulama.
 
 [ ] Metadata Filtering: Tarih veya yazar gibi verilere göre filtreleme.
+
+[ ] Model verimliliği: Model verimliliğini arttırmak ve Soru-Cevap verimini üst seviyeye çıkartmak için prompt üzerinde güncelleme yapılabilir.
 
 Teknik kararlar ve gelişim süreci için DEVLOG.md dosyasını inceleyebilirsiniz.
