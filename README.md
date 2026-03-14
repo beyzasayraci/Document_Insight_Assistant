@@ -58,8 +58,10 @@ python -m pip install -U huggingface_hub
 
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='zai-org/GLM-OCR', local_dir='./models/GLM-OCR', local_dir_use_symlinks=False)"
 ```
+
+## BGE-M3 modeli
 ```text
-Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
+BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
 ```
 ## Ollama'yı indirin ve kurun.
 ```text
