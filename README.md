@@ -31,7 +31,7 @@ Final Answer: İlgili bağlamın Qwen 2.5:7b modeline sunularak cevabın üretil
 
 📦 Kurulum ve Hazırlık
 1. Ortamın Hazırlanması
-Bash
+
 # Sanal ortam oluşturun
 python -m venv .venv
 
