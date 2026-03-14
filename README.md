@@ -107,22 +107,43 @@ için kullanılır.
 •	İlk açılış biraz uzun sürebilir; çünkü model indirilecek ve cache’e alınacaktır.
 Ekstra manuel model indirme adımı gerekmez; bağımlılıkları kurmak yeterlidir.
 ```
-## Ollama'yı indirin ve kurun.
+## Yerel LLM Kurulumu (Ollama)
 ```text
 Cevap üretimi için Ollama kurulu olmalıdır.
 ```
 ```bash
+#Windows PowerShell için:
 irm https://ollama.com/install.ps1 | iex
+```
+```text
+Kurulumu doğrulama
+```
+```bash
+ollama --version
 ```
 ## Modeli çekin.
 ```bash
 ollama pull qwen2.5:7b
 ```
 Doğrulayın:
-
 ```bash
-ollama list 
+ollama --version
+ollama list
+```text
+Projeyi çalıştırmadan önce şunlardan emin olun:
+•	Ollama kurulmuş olmalı
+•	qwen2.5:7b modeli indirilmiş olmalı
+•	Ollama servisi yerelde erişilebilir olmalı
+Varsayılan Ollama adresi:
+http://localhost:11434
+```
+```text
+Modeli test etme:
+```
+```bash
+ollama run qwen2.5:7b
  ```
+
 # Uygulamayı başlatmak için:
 ```bash
 python run.py
@@ -149,21 +170,48 @@ app/
 ├── retrieval/    # Embedding ve vektör arama (In-memory)
 ├── ui/           # Streamlit arayüz bileşenleri
 └── config.py     # Model yolları ve sistem ayarları
+└── utils.py      # Sistem için gerekli dil ayarları
 ```
-# ⚠️ Sınırlamalar
+# Mevcut Tasarım Kararları
+Bu proje özellikle retrieval-augmented bir yapı olarak tasarlanmıştır; yani tüm belge doğrudan LLM’e gönderilmez.
+Bunun nedenleri:
+•	cevap üretimini daha kontrollü hale getirmek
+•	hallucination riskini azaltmak
+•	hangi bağlamdan cevap verildiğini daha görünür kılmak
+•	extraction / retrieval / answer katmanlarını ayrı ayrı debug edebilmek
+Son katmandaki LLM, tüm belgeyi değil, yalnızca retrieval ile bulunan ilgili bağlamı görür
+
+
+# Sınırlamalar
 Düşük çözünürlüklü, eğik, bulanık veya gürültülü görseller taramalarda OCR kalitesi düşebilir.
 
 Uzun kaynakça içeren belgelerde retrieval hassasiyeti değişebilir.
 
 Zaman zaman cevaplarda dil karmaşası yaşanabilir.
 
-# 🗺️ Gelecek Planları
-[ ] Reranking: Arama sonuçlarını daha hassas sıralamak için Cross-Encoder kullanımı.
+Bu sistem MVP niteliğindedir; öncelik tam üretim kalitesinden çok, uçtan uca çalışan bir pipeline kurmaktır.
 
-[ ] Citation: Cevaplarda metnin hangi sayfadan alındığını vurgulama.
+# Geliştirme Notları
+Bu repoda ayrıca bir DEVLOG.md dosyası bulunur. Burada:
+•	alınan teknik kararlar,
+•	değerlendirilen alternatifler,
+•	geliştirme sırasında yaşanan problemler,
+•	ve sistemin zaman içinde nasıl evrildiği
+kronolojik olarak not edilmiştir.
 
-[ ] Metadata Filtering: Tarih veya yazar gibi verilere göre filtreleme.
+# Örnek Kullanım Senaryoları
+•	Belgenin tarihini sormak
+•	Belgenin kime gönderildiğini sormak
+•	Bir makalenin ne hakkında olduğunu sormak
+•	Belgede geçen isimleri veya referansları listelemek
+•	Aynı belge üzerinde Türkçe veya İngilizce soru sormak
 
-[ ] Model verimliliği: Model verimliliğini arttırmak ve Soru-Cevap verimini üst seviyeye çıkartmak için prompt üzerinde güncelleme yapılabilir.
+# Gelecek Planları
+Olası sonraki adımlar:
+•	daha güçlü OCR / layout-aware parsing
+•	metadata-aware retrieval
+•	reranking
+•	cevaplarda daha güçlü citation formatı
+•	çok dilli cevap kontrolünü daha sağlam hale getirme
+•	tablo / form alanları için yapılandırılmış veri çıkarımı
 
-Teknik kararlar ve gelişim süreci için DEVLOG.md dosyasını inceleyebilirsiniz.
