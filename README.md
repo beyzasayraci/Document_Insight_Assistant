@@ -84,6 +84,10 @@ pip install -r requirements.txt
 
 ```text
 Taranmış belgeler için GLM-OCR modelini indirin:
+Varsayılan model dizini:
+models/GLM-OCR
+Bu yol app/config.py içinden yönetilir.
+
 ```
 ```bash
 python -m pip install -U huggingface_hub
