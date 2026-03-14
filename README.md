@@ -29,7 +29,7 @@ Retrieval: Sorunuzla en alakalı parçaların vektör benzerliği ile bulunması
 
 Final Answer: İlgili bağlamın Qwen 2.5:7b modeline sunularak cevabın üretilmesi.
 
-📦 Kurulum ve Hazırlık
+## 📦 Kurulum ve Hazırlık
 
 # Sanal ortam oluşturun
 python -m venv .venv
