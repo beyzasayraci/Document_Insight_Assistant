@@ -65,12 +65,11 @@ ollama pull qwen2.5:7b
 
 Doğrulayın: ollama list komutuyla modelin listede olduğunu görün.
 
-💻 Kullanım
-Uygulamayı başlatmak için:
-
+# Uygulamayı başlatmak için:
 
 python run.py
-Ardından tarayıcınızda açılan Streamlit arayüzünde:
+
+# Ardından tarayıcınızda açılan Streamlit arayüzünde:
 
 Belgenizi yükleyin.
 
