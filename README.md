@@ -38,7 +38,7 @@ Upload File → Extraction → Chunking → Embedding → Retrieval → Final An
 ```
 Sistem, bir soruyu cevaplamak için şu aşamalardan geçer:
 
-Yükleme: Belgenin sisteme alınması (Ingestion).
+Upload File: Belgenin sisteme alınması (Ingestion).
 
 Extraction: PyMuPDF veya GLM-OCR ile metne dönüştürme.
 
