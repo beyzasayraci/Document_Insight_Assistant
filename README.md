@@ -32,6 +32,10 @@ Tamamen Yerel: Verileriniz dışarı çıkmaz; işlemler kendi makinenizde Ollam
 Çift Dilli Destek: Türkçe ve İngilizce dillerinde yüksek performans sergiler.
 
 # 🛠️ Teknik Pipeline (Akış)
+
+```bash
+Yükleme → Extraction → Chunking → Embedding → Retrieval → Final Answer
+```
 Sistem, bir soruyu cevaplamak için şu aşamalardan geçer:
 
 Yükleme: Belgenin sisteme alınması (Ingestion).
