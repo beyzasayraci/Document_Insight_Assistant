@@ -45,7 +45,7 @@ pip install -r requirements.txt
 2. OCR ve Embedding Modelleri
 Taranmış belgeler için GLM-OCR modelini indirin:
 
-Bash
+
 python -m pip install -U huggingface_hub
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='zai-org/GLM-OCR', local_dir='./models/GLM-OCR', local_dir_use_symlinks=False)"
 Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
@@ -64,7 +64,7 @@ Doğrulayın: ollama list komutuyla modelin listede olduğunu görün.
 💻 Kullanım
 Uygulamayı başlatmak için:
 
-Bash
+
 python run.py
 Ardından tarayıcınızda açılan Streamlit arayüzünde:
 
