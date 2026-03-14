@@ -86,7 +86,7 @@ Belgenizi yükleyin.
 Belge hakkında sorularınızı sormaya başlayın.
 
 # 📂 Proje Yapısı
-
+```text
 app/
 ├── extraction/   # PDF parsing ve OCR mantığı
 ├── ingestion/    # Dosya yönlendirme ve yükleme akışı
@@ -95,7 +95,7 @@ app/
 ├── retrieval/    # Embedding ve vektör arama (In-memory)
 ├── ui/           # Streamlit arayüz bileşenleri
 └── config.py     # Model yolları ve sistem ayarları
-
+```
 # ⚠️ Sınırlamalar
 Düşük çözünürlüklü taramalarda OCR kalitesi düşebilir.
 
