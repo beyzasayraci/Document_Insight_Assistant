@@ -92,8 +92,11 @@ irm https://ollama.com/install.ps1 | iex
 ollama pull qwen2.5:7b
 ```
 ```text
-Doğrulayın: ollama list komutuyla modelin listede olduğunu görün.
+Doğrulayın:
 ```
+```bash
+ollama list 
+ ```
 # Uygulamayı başlatmak için:
 ```bash
 python run.py
