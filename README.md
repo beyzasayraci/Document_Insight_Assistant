@@ -46,7 +46,7 @@ pip install -r requirements.txt
 2. OCR ve Embedding Modelleri
 Taranmış belgeler için GLM-OCR modelini indirin:
 
-#GLM-OCR indirin
+# GLM-OCR indirin
 python -m pip install -U huggingface_hub
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='zai-org/GLM-OCR', local_dir='./models/GLM-OCR', local_dir_use_symlinks=False)"
 
@@ -55,7 +55,7 @@ Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak ind
 3. Yerel LLM Yapılandırması (Ollama)
 Cevap üretimi için Ollama kurulu olmalıdır.
 
-#Ollama'yı indirin ve kurun.
+# Ollama'yı indirin ve kurun.
 
 irm https://ollama.com/install.ps1 | iex
 
