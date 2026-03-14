@@ -29,9 +29,7 @@ Retrieval: Sorunuzla en alakalı parçaların vektör benzerliği ile bulunması
 
 Final Answer: İlgili bağlamın Qwen 2.5:7b modeline sunularak cevabın üretilmesi.
 
-```markdown
 # 📦 Kurulum ve Hazırlık
-```
 
 ## Sanal ortam oluşturun
 ```bash
@@ -49,21 +47,22 @@ source .venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-```markdown
 ## GLM-OCR indirin
-```
+```text
 Taranmış belgeler için GLM-OCR modelini indirin:
+```
 ```bash
 python -m pip install -U huggingface_hub
 
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='zai-org/GLM-OCR', local_dir='./models/GLM-OCR', local_dir_use_symlinks=False)"
 ```
-
-** Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
-
+```text
+Not: BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
+```
 ## Ollama'yı indirin ve kurun.
-
+```text
 Cevap üretimi için Ollama kurulu olmalıdır.
+```
 ```bash
 irm https://ollama.com/install.ps1 | iex
 ```
@@ -71,20 +70,21 @@ irm https://ollama.com/install.ps1 | iex
 ```bash
 ollama pull qwen2.5:7b
 ```
+```text
 Doğrulayın: ollama list komutuyla modelin listede olduğunu görün.
-
+```
 # Uygulamayı başlatmak için:
 ```bash
 python run.py
 ```
 # Ardından tarayıcınızda açılan Streamlit arayüzünde:
-
+```text
 Belgenizi yükleyin.
 
 İşleme butonuna basarak metin çıkarımını bekleyin.
 
 Belge hakkında sorularınızı sormaya başlayın.
-
+```
 # 📂 Proje Yapısı
 ```text
 app/
