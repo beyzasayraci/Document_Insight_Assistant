@@ -97,7 +97,15 @@ python -c "from huggingface_hub import snapshot_download; snapshot_download(repo
 
 ## BGE-M3 modeli
 ```text
-BGE-M3 embedding modeli uygulama ilk çalıştığında otomatik olarak indirilecektir.
+Bu projede belge parçaları ve kullanıcı sorguları için BAAI/bge-m3 embedding modeli kullanılmaktadır.
+Model SentenceTransformer üzerinden yüklenir ve ilk kullanımda otomatik olarak indirilir.
+Notlar
+•	Aynı embedding modeli hem:
+o	belge chunk’ları
+o	hem de kullanıcı sorguları
+için kullanılır.
+•	İlk açılış biraz uzun sürebilir; çünkü model indirilecek ve cache’e alınacaktır.
+Ekstra manuel model indirme adımı gerekmez; bağımlılıkları kurmak yeterlidir.
 ```
 ## Ollama'yı indirin ve kurun.
 ```text
