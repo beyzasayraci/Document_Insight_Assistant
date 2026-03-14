@@ -3,7 +3,11 @@ from __future__ import annotations
 from typing import List, Dict, Any
 
 
-def build_qa_messages(question: str, retrieved_chunks: List[Dict[str, Any]]) -> list[dict]:
+def build_qa_messages(
+    question: str,
+    retrieved_chunks: List[Dict[str, Any]],
+    answer_language: str,
+) -> list[dict]:
     context_parts = []
 
     for i, chunk in enumerate(retrieved_chunks, start=1):
@@ -18,17 +22,15 @@ Text:
 
     context = "\n\n".join(context_parts).strip()
 
-    system_prompt = """
+    system_prompt = f"""
 You are a document question-answering assistant.
 
 Rules:
 - Answer only from the provided retrieved document chunks.
 - Do not invent, assume, or infer unsupported facts.
 - Use only one language in the final answer.
-- The final answer must be in the same language as the user's question.
-- If the user's question is in English, answer fully in English.
-- If the user's question is in Turkish, answer fully in Turkish.
-- Do not mix Turkish, English, Chinese, or any other language in the same answer.
+- The final answer must be entirely in {answer_language}.
+- Never use any other language in the final answer.
 - Keep the answer concise, clear, and grounded in the document.
 - Prefer a short answer first, then a brief explanation if needed.
 - If the retrieved context does not explicitly support the answer, say that clearly.
@@ -52,9 +54,11 @@ Instructions:
 1. First determine whether the answer is explicitly supported by the retrieved context.
 2. If it is supported, answer clearly and briefly.
 3. If it is not fully supported, say that clearly and provide the closest relevant evidence from the context.
-4. Answer in exactly the same language as the user's question.
+4. Answer only in {answer_language}.
 5. Do not use any other language in the final answer.
 6. If the question asks for a list, gather all relevant items visible across all retrieved chunks.
+
+FINAL ANSWER LANGUAGE: {answer_language.upper()} ONLY
 """.strip()
 
     return [
