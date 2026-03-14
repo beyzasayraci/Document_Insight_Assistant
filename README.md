@@ -50,6 +50,17 @@ Retrieval: Sorunuzla en alakalı parçaların vektör benzerliği ile bulunması
 
 Final Answer: İlgili bağlamın Qwen 2.5:7b modeline sunularak cevabın üretilmesi.
 
+# Ana bileşenler
+```text
+•	PDF metin çıkarma: PyMuPDF
+•	Scanned/image OCR: GLM-OCR
+•	Chunking: paragraph-aware / sentence-fallback chunking
+•	Embedding: BAAI/bge-m3 (SentenceTransformer üzerinden)
+•	Retrieval: in-memory semantic search
+•	Yerel LLM çalışma katmanı: Ollama
+•	Cevap üretim modeli: qwen2.5:7b
+```
+
 # 📦 Kurulum ve Hazırlık
 
 ## Sanal ortam oluşturun
