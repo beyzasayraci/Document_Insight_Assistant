@@ -1,9 +1,9 @@
-📄 Document Insight Assistant
+# 📄 Document Insight Assistant
 Document Insight Assistant, yerel bir LLM (Large Language Model) kullanarak belgelerinizle etkileşime girmenizi sağlayan, uçtan uca bir RAG (Retrieval-Augmented Generation) prototipidir.
 
 Bu sistem, dokümanı doğrudan modele beslemek yerine; metni anlamlı parçalara ayırır, en ilgili kısımları "vektör tabanlı" olarak bulur ve sadece bu kanıtlara dayanarak cevap üretir. Bu sayede hallucination (uydurma) riskini minimize eder ve veri gizliliğini korur.
 
-✨ Öne Çıkan Özellikler
+# ✨ Öne Çıkan Özellikler
 Geniş Format Desteği: PDF, JPG ve PNG dosyalarını işleyebilir.
 
 Hibrit Metin Çıkarma: Dijital PDF'lerden doğrudan metin çekebilir, taranmış belgeler/görseller için ise GLM-OCR modelini kullanır.
@@ -14,7 +14,7 @@ Tamamen Yerel: Verileriniz dışarı çıkmaz; işlemler kendi makinenizde Ollam
 
 Çift Dilli Destek: Türkçe ve İngilizce dillerinde yüksek performans sergiler.
 
-🛠️ Teknik Pipeline (Akış)
+# 🛠️ Teknik Pipeline (Akış)
 Sistem, bir soruyu cevaplamak için şu aşamalardan geçer:
 
 Yükleme: Belgenin sisteme alınması (Ingestion).
